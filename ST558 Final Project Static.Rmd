@@ -1,0 +1,79 @@
+---
+title: "ST558 Final Project"
+author: "Alex Prevatte"
+date: "11/26/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Libraries
+library(tidyverse)
+library(knitr)
+library(GGally)
+library(caret)
+library(randomForest)
+library(doParallel)
+library(naniar)
+```
+
+Reading in the data
+
+```{r}
+# Read in the data file
+adultData <- read_delim("adult.data", 
+                      delim = ",",
+                      col_names = c("age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country", "income"),skip = 1)
+
+```
+
+Data Cleaning
+
+```{r}
+# Remove variables that are already represented in the data set or those that do not contribute to prediction of the response.
+
+#'fnlwgt' is a population weighting variable that contributes to representing the entire population. This does not have an effect on predicting income level. 
+
+#'education' is already represented by 'education-num' in the dataset, so we can also remove this variable.
+
+# The majority of capital-gain and capital-loss variables are 0. Therefore we should remove these variables since they will not have much of an effect on the prediction.
+
+# Remove 'fnlwgt', 'education', 'capital-gain', and 'capital-loss'
+adultData <- select(adultData, -c(fnlwgt, education, `capital-gain`, `capital-loss`))
+
+# Replace '?' entries with 'NA' and drop NA's.
+adultData[adultData == " ?"] <- NA
+adultData <- na.omit(adultData)
+
+# Convert character variables to factors
+adultData$income <- as.factor(adultData$income)
+adultData$workclass <- as.factor(adultData$workclass)
+adultData$`education-num` <- as.numeric(adultData$`education-num`)
+adultData$`marital-status` <- as.factor(adultData$`marital-status`)
+adultData$occupation <- as.factor(adultData$occupation)
+adultData$relationship <- as.factor(adultData$relationship)
+adultData$race <- as.factor(adultData$race)
+adultData$sex <- as.factor(adultData$sex)
+adultData$`hours-per-week` <- as.numeric(adultData$`hours-per-week`)
+adultData$`native-country` <- as.factor(adultData$`native-country`)
+#levels(adultData$income) <- c("0", "1")
+
+# Examine correlation among variables to test for collinearity
+```
+
+Data Exploration Page
+1. User should create graphical and numeric summaries
+2. Change the type of plot and summary reported
+3. Change the variables and filter the rows
+
+```{r}
+# numeric summaries
+summary(adultData)
+
+# count data - should be able to look at the frequency of people in several categories and what their income level should be. This will include a plot of income level and variables that were filtered in a table. Numeric summaries in the table can include averages or medians of like age, hours, etc. 
+
+```
+
