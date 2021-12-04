@@ -1,7 +1,0 @@
-"0","shiny::runGitHub(""aprevatte/ST558-Final-Project"", ref=""main"")
-"
-"2","Downloading https://github.com/aprevatte/ST558-Final-Project/archive/main.tar.gz
-"
-"2","Error: App dir must contain either app.R or server.R.
-[90mRun `rlang::last_error()` to see where the error occurred.[39m
-"
