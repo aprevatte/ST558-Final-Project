@@ -1,0 +1,139 @@
+shiny::runApp('Final')
+if(input$dist == "Just Classification"){
+g <- ggplot(data = GermanCredit, aes(x = Class))
+g + geom_bar()
+} else if(input$dist == "Classification and Unemployed"){
+g + geom_bar(aes(fill = as.factor(EmploymentDuration.Unemployed)),
+position = "dodge") + labs(fill = "Unemployment Status")
+} else {
+g + geom_bar(aes(fill = as.factor(ForeignWorker)), position = "dodge") +
+labs(fill = "Status")
+}
+library(caret)
+library(shiny)
+library(caret)
+library(tidyverse)
+library(DT)
+data("GermanCredit")
+shinyServer(function(input, output) {
+data <- reactive({
+var <- input$TI
+var2 <- input$NI
+GermanCreditSub <- GermanCredit[, c("Class", "InstallmentRatePercentage",
+var),drop = FALSE]
+tab <- aggregate(GermanCreditSub[[var]] ~ Class + InstallmentRatePercentage,
+data = GermanCreditSub, FUN = "mean")
+tab$`GermanCreditSub[[var]]` <- round(tab$`GermanCreditSub[[var]]`,
+digit = var2)
+setNames(tab, c("Class", "InstallmentRatePercentage",
+paste0("Average ", var)))
+})
+output$myTable<- renderDataTable({
+info <- data()
+})
+# code that will return plot
+output$distPlot <- renderPlot({
+if(input$dist == "Just Classification"){
+g <- ggplot(data = GermanCredit, aes(x = Class))
+g + geom_bar()
+} else if(input$dist == "Classification and Unemployed"){
+g + geom_bar(aes(fill = as.factor(EmploymentDuration.Unemployed)),
+position = "dodge") + labs(fill = "Unemployment Status")
+} else {
+g + geom_bar(aes(fill = as.factor(ForeignWorker)), position = "dodge") +
+labs(fill = "Status")
+}
+})
+})
+runApp('~/NCSU/ST558/DynamicUI')
+runApp('~/NCSU/ST558/Homework9')
+runApp('~/NCSU/ST558/Homework9')
+runApp('~/NCSU/ST558/Homework9')
+runApp('~/NCSU/ST558/Homework9')
+View(GermanCredit)
+runApp('Final')
+runApp('Final')
+runApp('Final')
+library(shinydashboard)
+install.packages("shinydashboard")
+library(shinydashboard)
+runApp('Project')
+runApp('Final')
+runApp('~/NCSU/ST558/Homework9')
+knitr::opts_chunk$set(echo = TRUE)
+# numeric summaries
+summary(adultData)
+# Remove variables that are already represented in the data set or those that do not contribute to prediction of the response.
+#'fnlwgt' is a population weighting variable that contributes to representing the entire population. This does not have an effect on predicting income level.
+#'education' is already represented by 'education-num' in the dataset, so we can also remove this variable.
+# The majority of capital-gain and capital-loss variables are 0. Therefore we should remove these variables since they will not have much of an effect on the prediction.
+# Remove 'fnlwgt', 'education', 'capital-gain', and 'capital-loss'
+adultData <- select(adultData, -c(fnlwgt, education, `capital-gain`, `capital-loss`))
+# Libraries
+library(tidyverse)
+library(knitr)
+library(GGally)
+library(caret)
+library(randomForest)
+library(doParallel)
+library(naniar)
+# Read in the data file
+adultData <- read_delim("adult.data",
+delim = ",",
+col_names = c("age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country", "income"),skip = 1)
+setwd("~/NCSU/ST558")
+# Read in the data file
+adultData <- read_delim("adult.data",
+delim = ",",
+col_names = c("age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country", "income"),skip = 1)
+# Read in the data file
+adultData <- read_delim("adult.data",
+delim = ",",
+col_names = c("age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country", "income"),skip = 1)
+# Remove variables that are already represented in the data set or those that do not contribute to prediction of the response.
+#'fnlwgt' is a population weighting variable that contributes to representing the entire population. This does not have an effect on predicting income level.
+#'education' is already represented by 'education-num' in the dataset, so we can also remove this variable.
+# The majority of capital-gain and capital-loss variables are 0. Therefore we should remove these variables since they will not have much of an effect on the prediction.
+# Remove 'fnlwgt', 'education', 'capital-gain', and 'capital-loss'
+adultData <- select(adultData, -c(fnlwgt, education, `capital-gain`, `capital-loss`))
+# Replace '?' entries with 'NA' and drop NA's.
+adultData[adultData == " ?"] <- NA
+adultData <- na.omit(adultData)
+# Convert character variables to factors
+adultData$income <- as.factor(adultData$income)
+adultData$workclass <- as.factor(adultData$workclass)
+adultData$`education-num` <- as.numeric(adultData$`education-num`)
+adultData$`marital-status` <- as.factor(adultData$`marital-status`)
+adultData$occupation <- as.factor(adultData$occupation)
+adultData$relationship <- as.factor(adultData$relationship)
+adultData$race <- as.factor(adultData$race)
+adultData$sex <- as.factor(adultData$sex)
+adultData$`hours-per-week` <- as.numeric(adultData$`hours-per-week`)
+adultData$`native-country` <- as.factor(adultData$`native-country`)
+#levels(adultData$income) <- c("0", "1")
+# Examine correlation among variables to test for collinearity
+# numeric summaries
+summary(adultData)
+# count data - should be able to look at the frequency of people in several categories and what their income level should be. This will include a plot of income level and variables that were filtered in a table. Numeric summaries in the table can include averages or medians of like age, hours, etc.
+knitr::opts_chunk$set(echo = TRUE)
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("shinyWidgets")
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("shinythemes")
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("plotly")
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("plotly")
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("rattle")
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("imager")
+shiny::runGitHub("jkclem/first-shiny-app", ref="main")
+install.packages("shiny")
+install.packages("shinyWidgets")
+install.packages("shinythemes")
+install.packages("DT")
+install.packages("readr")
+install.packages("tidyverse")
+install.packages("plotly")
+install.packages("imager")

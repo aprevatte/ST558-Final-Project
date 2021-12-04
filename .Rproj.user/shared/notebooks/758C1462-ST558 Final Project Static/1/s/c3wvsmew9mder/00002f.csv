@@ -1,0 +1,8 @@
+"0","newData <- adultData %>% filter(Income == ""<=50K"" &
+                                            Sex == ""Male"") %>% 
+            select((as.name((""Age"", ""Income""))))
+"
+"2","Error: unexpected ',' in:
+""                                            Sex == ""Male"") %>% 
+            select((as.name((""Age"",""
+"
