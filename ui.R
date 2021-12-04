@@ -1,4 +1,4 @@
-library(ggplot2)
+library(tidyverse)
 library(shinydashboard)
 library(DT)
 library(factoextra)
