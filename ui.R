@@ -7,7 +7,7 @@ library(plotly)
 dashboardPage(
     dashboardHeader(title = "Census Dashboard"),
     dashboardSidebar(sidebarMenu(
-        menuItem("About", tabName = "about", icon = icon("calendar")),
+        menuItem("About", tabName = "about", icon = icon("table")),
         menuItem("Data Exploration", tabName = "dataexp", icon = icon("chart-bar")),
         menuItem("Modeling", tabName = "modeling", icon = icon("chart-pie")),
         menuItem("Data", tabName = "data", icon = icon("dashboard"))
@@ -46,10 +46,65 @@ dashboardPage(
                 )
         ),
         
+        #
+        #
+        #
+        # Start Data Exploration Tab
+        tabItem(tabName = "dataexp",
+                fluidRow(
+                    column(3,
+                           box(width = 12,
+                "You can create a few bar plots using the radio buttons below:",
+                br(),
+                radioButtons(inputId = "dist",
+                             label = list("Select the Plot Type"),
+                             choices = list("Gender classification and income level", 
+                                            "Race classification and income level",
+                                            "Occupation classification and Income Level",
+                                            "Education classification and Income Level")),
+                "You can find the ",
+                strong("sample mean"),
+                "for a few variables below:",
+                selectInput("TI", "Variables to Summarize", choices = list("Age")), 
+                #                                                            "Amount",
+                #                                                            "Duration")),
+                numericInput("NI", "Select the number of digits for rounding", 
+                              min = 0,max = 5, value = 0, step = 1)
+            )),
         
-        #_____________________________________________________________________________________
+        column(9, 
+               plotOutput("distPlot"),
+               #textOutput("myText"),
+               dataTableOutput("summary")
+        )
+                    )),
         
-        #Data table tab
+        # # Data table tab
+        # tabItem(tabName = "data",
+        #         fluidRow(
+        #             column(3,
+        #                    box(width = 12,
+        #                        selectInput("incomeChoice", label = "Income", 
+        #                                    choices = list("<=50K" = "<=50K", ">50K" = ">50K")),
+        #                        selectInput("sexChoice", label = "Gender", 
+        #                                    choices = list("Male" = "Male", "Female" = "Female")),
+        #                        checkboxGroupInput("variableChoice", label = "Variable Choice",
+        #                                           choices = list("Age", "Workclass", "fnlwgt", "Education", "Education_Number", "Marital_Status", "Occupation", "Relationship", "Race", "Capital_Gain", "Capital_Loss", "Native_Country"),
+        #                                           selected = list("Age", "Workclass", "Education"))
+        #                    )
+        #             ),
+        #             column(9, 
+        #                    dataTableOutput("Table"),
+        #                    downloadButton("downloadData", "Download")
+        #             )
+        #         )
+        # ),
+        
+        
+        
+        
+        
+        # Data tab
         tabItem(tabName = "data",
                 fluidRow(
                     column(3,
