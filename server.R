@@ -1,6 +1,5 @@
 library(shiny)
-library(dplyr)
-library(readr)
+library(tidyverse)
 library(ggplot2)
 library(DT)
 library(ggrepel)

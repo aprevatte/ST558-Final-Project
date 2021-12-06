@@ -10,7 +10,7 @@ dashboardPage(
         menuItem("About", tabName = "about", icon = icon("table")),
         menuItem("Data Exploration", tabName = "dataexp", icon = icon("chart-bar")),
         menuItem("Modeling", tabName = "modeling", icon = icon("chart-pie")),
-        menuItem("Data", tabName = "data", icon = icon("dashboard"))
+        menuItem("Data", tabName = "data", icon = icon("chart-pie"))
     )
     ),
     dashboardBody(tabItems(
