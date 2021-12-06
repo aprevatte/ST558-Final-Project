@@ -27,7 +27,7 @@ packages:
     Machine Learning
 -   [`tree`](https://cran.r-project.org/web/packages/tree/index.html):
     Classification Tree
--   [\`randomForest\`\`](https://cran.r-project.org/web/packages/randomForest/randomForest.pdf):
+-   [`randomForest`](https://cran.r-project.org/web/packages/randomForest/randomForest.pdf):
     Random Forest Model
 
 To install all of the packages, run this code:
