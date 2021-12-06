@@ -37,18 +37,16 @@ dashboardPage(
                              h4(tags$b("hours-per-week:"), "continuous"),
                              h4(tags$b("native-country:"), "United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands"),
                              h3(tags$b("Purpose of the Data Exploration Page")),
-                             h4("something"),
+                             h4("The purpose of this page is to examine trends in gender, race, occupation, and education as it relates to income level. The average age variable is also summarized within each income category"),
                              h3(tags$b("Purpose of the Modeling and Prediction Page")),
-                             h4("something"),
+                             h4("The modeling and prediction page has the purpose of examining three different models for summarizing and determining the best model fit for the data. The models used in this application include logistic regression, classification tree, and random forest. After determining the best model, predictions were made from subsets of the data chosen by the user."),
                              h3(tags$b("Purpose of the Data Page")),
-                             h4("something")
+                             h4("The purpose of the data page is to have the user filter the entire data set and download copies of the data.")
                     )
                 )
         ),
         
-        #
-        #
-        #
+
         # Start Data Exploration Tab
         tabItem(tabName = "dataexp",
                 fluidRow(
@@ -79,9 +77,6 @@ dashboardPage(
                     )
                 )),
         
-        #
-        #
-        #
         #Start models tab
         tabItem(tabName = "modeling",
                 tabsetPanel(

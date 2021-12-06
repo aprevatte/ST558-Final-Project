@@ -22,7 +22,7 @@ adultData$Education <- trimws(adultData$Education, which = c("left"))
 adultData$Native_Country <- trimws(adultData$Native_Country, which = c("left"))
 adultData$Income <- trimws(adultData$Income, which = c("left"))
 
-# Remove 'fnlwgt', 'education', 'capital-gain', and 'capital-loss'
+# Remove 'fnlwgt', 'education', 'capital-gain', and, 'capital-loss'
 adultDataSub <- select(adultData, -c(fnlwgt, Education, Capital_Gain, Capital_Loss))
 
 # Replace '?' entries with 'NA' and drop NA's.
