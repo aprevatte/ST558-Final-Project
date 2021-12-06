@@ -1,6 +1,0 @@
-"0","tab <- aggregate(adultDataSub[[""Age""]] ~ Income,
-                             data = adultDataSub, FUN = c(""mean"", ""median""))
-"
-"2","Error in get(as.character(FUN), mode = ""function"", envir = envir) : 
-  object 'FUN' of mode 'function' was not found
-"
